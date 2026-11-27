@@ -96,7 +96,7 @@ for (const [label, opts] of [
   served = { version: '9999.01.01-000000', builtAt: new Date().toISOString() };
   // Forced, because the real check throttles to once a minute and waiting out
   // a minute per assertion is not a test anybody runs.
-  await page.evaluate(() => window.__ashenveil.checkBuild(true));
+  await page.evaluate(() => window.__prehistorextraction.checkBuild(true));
   await page.waitForTimeout(700);
   check(`${label}: a stale page offers a reload`,
     (await page.getByRole('button', { name: /New build/ }).count()) === 1);
@@ -121,7 +121,7 @@ for (const [label, opts] of [
 
   // A fresh squad cannot deploy until somebody is named leader.
   await page.evaluate(() => {
-    const a = window.__ashenveil;
+    const a = window.__prehistorextraction;
     a.profile.squadTactics.leaderId = a.profile.squad[0];
     a.save();
     a.go('hub');
@@ -134,7 +134,7 @@ for (const [label, opts] of [
   check('a raid is running', (await page.locator('canvas').count()) >= 1);
 
   served = { version: '9999.01.01-000000', builtAt: new Date().toISOString() };
-  await page.evaluate(() => window.__ashenveil.checkBuild(true));
+  await page.evaluate(() => window.__prehistorextraction.checkBuild(true));
   await page.waitForTimeout(700);
   check('a stale build does not interrupt a raid',
     (await page.getByRole('button', { name: /New build/ }).count()) === 0);

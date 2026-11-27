@@ -206,7 +206,7 @@ for (const [label, opts] of [
   // Pure DOM: set the squad through the harness and open the briefing. No
   // raid is started, so all sixteen are checked in about a second.
   const briefing = await page.evaluate(async () => {
-    const app = window.__ashenveil;
+    const app = window.__prehistorextraction;
     const { CLASS_IDS } = await import('/src/data/classes.js');
     const heroes = await import('/src/sim/heroes.js');
     const { makeRng } = await import('/src/core/rng.js');

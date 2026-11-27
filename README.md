@@ -1,4 +1,4 @@
-# Ashenveil
+# Prehistorextraction
 
 A browser-based **PvPvE extraction hunting autobattler**.
 
@@ -1466,7 +1466,7 @@ is not one.
 the journal remembers and grows as the squad meets things, a pack species
 offers both sizes and a solo creature offers neither, and an order given from
 the in-raid panel reaches the squad rather than only lighting up a button. It
-reads the live squad through `window.__ashenveil`, because a DOM-only check can
+reads the live squad through `window.__prehistorextraction`, because a DOM-only check can
 tell that a button turned gold and not that anything happened.
 
 `test-sprites.mjs` covers the class art. Most of it is about the atlas being

@@ -34,7 +34,7 @@ const app = {
 // poking at it from a console. A browser test that can only read the DOM can
 // tell that a button lit up but not that the order reached the squad, which
 // is the half that matters.
-window.__ashenveil = app;
+window.__prehistorextraction = app;
 
 const mount = document.getElementById('app');
 
@@ -106,7 +106,8 @@ function render(screen, params) {
 function topbar(screen) {
   const inRaid = screen === 'match';
   return el('div.topbar', null, [
-    el('div.brand', null, ['ASHENVEIL', el('span', null, 'PVPVE EXTRACTION AUTOBATTLER')]),
+    // The zero-width space lets the name break in two on the narrowest phones.
+    el('div.brand', null, ['PREHISTOR\u200BEXTRACTION', el('span', null, 'PVPVE EXTRACTION AUTOBATTLER')]),
     el('div.grow'),
     // Which build this is. It is here for one reason: "did my push go live"
     // should be answerable by looking at the page rather than by reading a

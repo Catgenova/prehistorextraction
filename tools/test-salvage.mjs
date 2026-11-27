@@ -157,7 +157,7 @@ for (const [label, opts] of [
   // put the piece on the shelf; the shelf refuses it now, so the click would
   // destroy a free item and leave the slot empty for nothing.
   await page.evaluate(() => {
-    const app = window.__ashenveil;
+    const app = window.__prehistorextraction;
     const hero = app.profile.roster[0];
     app.go('hero', { heroId: hero.id, tab: 'gear' });
   });

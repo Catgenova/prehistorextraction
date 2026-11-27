@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Ashenveil — a grim, parchment-and-iron palette. Everything is one dark
+   Prehistorextraction — a grim, parchment-and-iron palette. Everything is one dark
    theme; the map does the colour work, so the chrome stays quiet.
    ========================================================================== */
 
@@ -593,7 +593,7 @@ body:not([data-screen="match"]) .panel.grow { flex: none; }
 /* Phone-sized chrome: typography, the stacked forms, and the in-raid HUD. */
 @media (max-width: 860px) {
   .topbar { position: sticky; top: 0; z-index: 20; padding: 8px 12px; gap: 8px; }
-  .topbar .brand { font-size: 15px; }
+  .topbar .brand { font-size: 13px; letter-spacing: .02em; line-height: 1.15; min-width: 0; }
   .topbar .brand span { display: none; }
 
   .two-col { grid-template-columns: 1fr; gap: 14px; }

@@ -167,7 +167,7 @@ for (const [label, opts] of [
     `${enabled}/${all} answerable`);
 
   const live = () => page.evaluate(() => {
-    const s = window.__ashenveil?.liveMatch?.playerSquad;
+    const s = window.__prehistorextraction?.liveMatch?.playerSquad;
     return s ? s.tactics.quarry : 'no match';
   });
 
@@ -195,11 +195,11 @@ for (const [label, opts] of [
   // Reproduced rather than waited for: click a row (which sets the order and
   // re-renders, detaching the node), then click the very same detached node
   // again, all inside one synchronous evaluate so no render can intervene.
-  await page.evaluate(() => { window.__ashenveil.liveMatch.playerSquad.tactics.quarry = null; });
+  await page.evaluate(() => { window.__prehistorextraction.liveMatch.playerSquad.tactics.quarry = null; });
   await page.waitForTimeout(250);   // let the pad render with nothing ordered
 
   const stale = await page.evaluate(() => {
-    const squad = window.__ashenveil.liveMatch.playerSquad;
+    const squad = window.__prehistorextraction.liveMatch.playerSquad;
     const row = document.querySelector('.huntpad .hunt-row button:not([disabled])');
     if (!row) return { error: 'no row' };
     row.click();                    // orders it; the pad re-renders and detaches `row`

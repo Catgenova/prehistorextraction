@@ -321,7 +321,7 @@ if (!playwright) {
 
     const got = await page.evaluate(async () => {
       const sp = await import('/src/ui/sprites.js');
-      const m = window.__ashenveil.liveMatch;
+      const m = window.__prehistorextraction.liveMatch;
       const heroes = m.entities.filter((e) => e.kind === 'hero');
       const ctx = document.createElement('canvas').getContext('2d');
       const beasts = m.entities.filter((e) => e.kind !== 'hero' && e.team === 'pve');
@@ -428,7 +428,7 @@ if (!playwright) {
     await raid(page);
     const ok = await page.evaluate(async () => {
       const sp = await import('/src/ui/sprites.js');
-      const m = window.__ashenveil.liveMatch;
+      const m = window.__prehistorextraction.liveMatch;
       return {
         ready: sp.spritesReady(), beasts: sp.beastsReady(),
         running: m.phase === 'running', canvas: !!document.querySelector('canvas#stage'),
