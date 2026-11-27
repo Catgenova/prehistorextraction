@@ -21,6 +21,26 @@ python3 -m http.server 8080
 
 Then open <http://localhost:8080>. Progress is saved to `localStorage`.
 
+### Where it is served
+
+<https://pere.games>, from `main`, by GitHub Pages. The `CNAME` file in the
+repository root is what sets that: Pages reads it on deploy, serves the site at
+the domain it names, and redirects the old `catgenova.github.io/Fantasyextraction`
+address there. Deleting or changing that file moves the site, so it is not a
+stray config file to tidy away.
+
+Nothing in the code knows the domain. Every path in `index.html` and every
+import below it is relative, which is why moving from a project subpath to an
+apex domain needed no code change at all — and the browser suites have always
+served the repository root at `/`, so the apex layout was the one under test
+even while the subpath was the one being served.
+
+The one thing that does not travel is saves. `localStorage` is scoped per
+origin, so `catgenova.github.io` and `pere.games` hold separate worlds and
+there is no export to carry an account between them. Anyone with progress at
+the old address keeps it only for as long as they go back to it, and the
+redirect means they cannot.
+
 ### Knowing which build you are on
 
 The site is plain ES modules on GitHub Pages: no bundler, no content hashes, no
