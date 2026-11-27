@@ -23,28 +23,24 @@ Then open <http://localhost:8080>. Progress is saved to `localStorage`.
 
 ### Where it is served
 
-<https://pere.games>, from `main`, by GitHub Pages. The `CNAME` file in the
-repository root is what sets that: Pages reads it on deploy, serves the site at
-the domain it names, and redirects the project's `catgenova.github.io` address
-there. Deleting or changing that file moves the site, so it is not a stray
-config file to tidy away.
+<https://pere.games/prehistorextraction/>, from `main`, by GitHub Pages. The
+game is a project site under the pere.games hub (`Catgenova/Catgenova.github.io`):
+GitHub serves this repository at `catgenova.github.io/<repository>/`, and the
+hub's custom domain makes that `https://pere.games/<repository>/`. **The
+repository name is the path**, so renaming the repository moves the site; when
+that happens, add the old name to the `moved` map in the hub's `404.html` so old
+links still land.
 
-The domain is the stable address, which is the point of having one — the
-repository has already been renamed once underneath it, and GitHub redirects
-both the old repository URL and the old Pages path, so neither is worth writing
-down here.
+Do not add a `CNAME` file here. A custom domain on this repository would claim
+the whole `pere.games` apex away from the hub, which owns the domain and its DNS.
 
-Nothing in the code knows the domain. Every path in `index.html` and every
-import below it is relative, which is why moving from a project subpath to an
-apex domain needed no code change at all — and the browser suites have always
-served the repository root at `/`, so the apex layout was the one under test
-even while the subpath was the one being served.
+Nothing in the code knows the domain or the path. Every path in `index.html` and
+every import below it is relative, so the game runs unchanged at the subpath.
 
-The one thing that does not travel is saves. `localStorage` is scoped per
-origin, so `catgenova.github.io` and `pere.games` hold separate worlds and
-there is no export to carry an account between them. Anyone with progress at
-the old address keeps it only for as long as they go back to it, and the
-redirect means they cannot.
+Saves live in `localStorage`, which is scoped per origin, not per path. The game
+stays on the `pere.games` origin wherever it sits under it, so moving between
+paths keeps saves; moving to a different domain would not, and there is no
+export to carry an account across.
 
 ### Knowing which build you are on
 
